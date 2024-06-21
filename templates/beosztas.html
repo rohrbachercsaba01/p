@@ -1,0 +1,132 @@
+{% extends 'layout.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="hun">
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SagemCom - Beosztás</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="static/css/navbar.css">
+        <link rel="stylesheet" href="static/css/holidaysform.css">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="static/css/calendar.css">
+        <link rel="stylesheet" href="static/css/beochange.css">
+    </head>
+    <body>
+        <div id="overlay" class="sagemcom-beosztas-overlay" style="display:none;"></div>
+        
+        <form id="scheduleForm" class="sagemcom-beosztas-scheduleForm" action="/get_attendance" method="post">
+            <div class="nameContainer">
+                <label id="name" name="name">{{ session['fullname'] }}</label>
+                <input type="hidden" id="username" value="{{ session['fullname'] }}">
+            </div>
+            <div class="sagemcom-beosztas-flex-container">
+                <button id="openPopup" type="button" class="sagemcom-button-btn sagemcom-button-btn-primary">Beosztás feltöltése</button>
+                <button id="openHolidayRequestPopup" type="button" class="sagemcom-button-btn sagemcom-button-btn-secondary">Szabadság kérelem</button>
+                <button id="downloadAttendance" type="submit" class="sagemcom-button-btn sagemcom-button-btn-primary">Jelenléti letöltése</button>
+                <button id="openScheduleChangeRequest" type="button" class="sagemcom-button-btn sagemcom-button-btn-secondary">Beosztásváltoztatás kérelem</button>
+            </div>
+        </form>
+
+        <div id="popupForm" class="sagemcom-beosztas-popupForm" style="display: none;">
+            <button id="closePopup" type="button">&times;</button>
+            <div class="sagemcom-beosztas-flex-container">
+                <label for="dayByDay">Naponta:</label>
+                <input type="checkbox" id="dayByDay" name="dbd" required>
+            </div>
+    
+            <div class="sagemcom-beosztas-flex-container" id="additionalFields1" style="display: none;">
+                <label for="date1">Dátum:</label>
+                <input type="date" id="date1" name="date1" required>
+                <label for="startHour1">Kezdés:</label>
+                <input type="time" id="startHour1" name="startHour1" required>
+                <label for="endHour1">Befejezés:</label>
+                <input type="time" id="endHour1" name="endHour1" required>
+                <select name="workSpot1" id="workSpot1">
+                    <option value="homeoffice" selected>Home office</option>
+                    <option value="iroda">Iroda</option>
+                </select>
+            </div>
+        
+            <div class="sagemcom-beosztas-flex-container">
+                <label for="fullMonth">Egész hónap:</label>
+                <input type="checkbox" id="fullMonth" name="fm" required>
+            </div>
+    
+            <div class="sagemcom-beosztas-flex-container" id="additionalFields2" style="display: none;">
+                <label for="startDate2">Kezdő dátum:</label>
+                <input type="date" id="startDate2" name="startDate2" required>
+                <label for="endDate2">Végdátum:</label>
+                <input type="date" id="endDate2" name="endDate2" required>
+                <label for="startHour2">Kezdés:</label>
+                <input type="time" id="startHour2" name="startHour2" required>
+                <label for="endHour2">Befejezés:</label>
+                <input type="time" id="endHour2" name="endHour2" required>
+            </div>
+            <div class="sagemcom-beosztas-flex-container">
+                <button type="submit" id="okButton" class="sagemcom-button-btn sagemcom-button-btn-primary">Küldés</button>
+            </div>
+            
+        </div>
+        
+        <div id="holidayRequestForm">
+            <div id="holidayRequestPopup" class="sagemcom-szabadsag-holidayRequestPopup">
+                <button id="closeHolidayRequestPopup" type="button">&times;</button>
+                <h2>Szabadság kérelem</h2>
+                <form action="/submit_holiday_request" method="post">
+                    <div class="sagemcom-szabadsag-flex-container">
+                        <label for="holidayStartDate">Kezdő dátum:</label>
+                        <input type="date" id="holidayStartDate" name="holidayStartDate" required>
+                    </div>
+                    <div class="sagemcom-szabadsag-flex-container">
+                        <label for="holidayEndDate">Végdátum:</label>
+                        <input type="date" id="holidayEndDate" name="holidayEndDate" required>
+                    </div>
+                    <div class="sagemcom-szabadsag-flex-container">
+                        <button type="submit" class="sagemcom-button-btn sagemcom-button-btn-primary">Küldés</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="scheduleChangeRequestForm">
+            <div id="scheduleChangeRequestPopup" class="sagemcom-beosztasmodositas-scheduleChangeRequestPopup">
+                <button id="closeScheduleChangeRequestPopup" type="button">&times;</button>
+                <h2>Beosztás módosítása</h2>
+                <form action="requestScheduleChange" method="post">
+                    <div class="sagemcom-beosztasmodositas-flex-container">
+                        <label for="changeRequestDate">Dátum:</label>
+                        <input type="date" id="changeRequestDate" name="changeRequestDate" required>
+                    </div>
+                    <div class="sagemcom-beosztasmodositas-flex-container">
+                        <label for="changeRequestStartHour">Kezdés:</label>
+                        <input type="time" id="changeRequestStartHour" name="changeRequestStartHour" required>
+                        <label for="changeRequestEndHour">Befejezés:</label>
+                        <input type="time" id="changeRequestEndHour" name="changeRequestEndHour" required>
+                    </div>
+                    <div class="sagemcom-beosztasmodositas-flex-container">
+                        <button type="submit" class="sagemcom-button-btn sagemcom-button-btn-primary">Küldés</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        
+
+
+        
+        <div id='calendar' class="sagemcom-beosztas-calendar"></div>
+        <input type="hidden" id="UserColor" value="{{ session['color'] }}">
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+        <script src="https://static.cloudflareinsights.com/beacon.min.js"></script>
+        <script src="static/js/calendar.js"></script>
+        <script src="static/js/beochange.js"></script>
+        <script src="static/js/holidaysform.js"></script>
+        <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "dc4641f860664c6e824b093274f50291"}'></script>
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/locales/hu.js"></script>
+    </body>
+</html>
+{% endblock %}

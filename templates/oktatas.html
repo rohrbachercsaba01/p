@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SagemCom - Oktatás</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/navbar.css">
+    <link rel="stylesheet" href="static/css/oktatas.css">
+</head>
+
+<body>
+
+<form id="scheduleForm">
+    <div class="oktatas-flex-container">
+        <label for="nev">Név:</label>
+        <select id="nevDropdown" class="oktatas-form-control">
+            <option value="">Felhasználó</option>
+        </select>
+    </div>
+
+    <div class="oktatas-flex-container">
+        <label for="oktatas">Oktatás:</label>
+        <input list="oktOptions" id="oktatas" name="oktatas" class="oktatas-form-control">
+    </div>
+
+    <div class="oktatas-flex-container">
+        <button id="openPopup" type="button" class="oktatas-btn-primary">Oktatás feltöltése</button>
+    </div>
+</form>
+
+<div id="popupForm" style="display: none;">
+    <form>
+        <div class="oktatas-flex-container">
+            <label for="naponta">Naponta:</label>
+            <input type="checkbox" id="naponta" name="dbd" required>
+        </div>
+
+        <div class="oktatas-flex-container" id="VadditionalFields1" style="display: none;">
+            <label for="datum1">Dátum:</label>
+            <input type="date" id="datum1" name="datum1" required>
+            <label for="kezdoOra1">Kezdés:</label>
+            <input type="time" id="kezdoOra1" name="kezdoOra1" required>
+            <label for="vegOra1">Befejezés:</label>
+            <input type="time" id="vegOra1" name="vegOra1" required>
+        </div>
+
+        <button type="submit" id="okGomb" class="oktatas-btn-primary">Ok</button>
+        <button type="button" id="closePopup" class="oktatas-btn-secondary">Bezárás</button>
+    </form>
+</div>
+
+<div>
+    <input type="hidden" id="UserColor" value="{{ session['color'] }}">
+</div>
+
+<div id='calendar'></div>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+<script src="https://static.cloudflareinsights.com/beacon.min.js"></script>
+<script src="static/js/oktatas.js"></script>
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "dc4641f860664c6e824b093274f50291"}'></script>
+</body>
+
+</html>
+{% endblock %}

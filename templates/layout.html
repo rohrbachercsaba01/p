@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/navbar.css">
+    <link rel="stylesheet" href="static/css/layout.css">
+    <!--<link rel="stylesheet" href="static/css/bootstrap.min.css">-->
+    <title>{% block title %}Sagemcom Website{% endblock %}</title>
+
+    {% block extend %}{% endblock %}
+</head>
+
+<body>
+    <nav id="navbar" class="navbar navbar-expand-md bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="fullbeo" style="color: aliceblue;">Beosztás</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="xml" style="color: aliceblue;">XML Tool</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tools" style="color: aliceblue;">Useful Tools</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="holidays" style="color: aliceblue;">Szabadságok</a>
+                    </li>
+
+                    <div class="user-info" style="color: aliceblue;">
+                        <button class="fancybutton" onclick="toggleDropdown()">Üdv, {{ session['fullname'] }}!</button>
+                    </div>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="dropdown">
+        <div class="dropdown-content" id="profileForm" style="display: none;">
+            <div class="button-container">
+                <!-- Individual buttons inside the dropdown -->
+                <button onclick="handleButtonClick('Button 1')">Profil</button>
+                <div></div>
+                <button onclick="handleButtonClick('Button 2')">Beosztás feltöltése</button>
+                <div></div>
+                {% if session['role_id'] in [1,3] %}
+                <button onclick="handleButtonClick('Button 4')">Oktatás</button>
+                <div></div>
+                {% endif %}
+                {% if session['role_id'] in [1] %}
+                <button onclick="handleButtonClick('Button 3')">Postaláda</button>
+                <div></div>
+                <button onclick="handleButtonClick('Button 7')">Admin</button>
+                <div></div>
+                {% endif %}
+                <button onclick="handleButtonClick('Button 5')">Kijelentkezés</button>
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <div id="content">
+
+    </div>
+
+    <script src="/static/js/timeout.js" defer></script>
+    <script src="/static/js/profilepopup.js" defer></script>
+    {% block content %}{% endblock %}
+</body>
+
+</html>

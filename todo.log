@@ -1,0 +1,8 @@
+- szabadságos tábla átalakítása currdate formátumra
+- db frissítés ütemezése
+- 2 factor auth
+- óraösszesítések megjelenítése (almost done)
+- csr generálás az oldalon
+- timestamp, ki hagyta jóvá (done)
+
+ledolgozott óra, szabadsag óra, betegsz óra, össz óra(ledolg + szabadsag), túlóra

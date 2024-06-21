@@ -1,0 +1,104 @@
+/* Egységes overlay stílus */
+.sagemcom-szabadsag-overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1040; /* A Bootstrap modal z-index szintje fölött */
+}
+
+/* Egységes holiday request popup form stílus */
+.sagemcom-szabadsag-holidayRequestPopup {
+    display: none;
+    position: fixed;
+    z-index: 1050; /* Biztosítva, hogy a popup az előtérben legyen */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%; /* A szélesség hasonló a többi formhoz */
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Enyhe árnyékot adunk hozzá */
+    padding: 30px; /* Nagyobb padding a tágasabb megjelenésért */
+    max-width: 600px; /* Max szélesség, hogy ne legyen túl széles */
+    overflow-y: auto; /* Görgethető, ha a tartalom hosszabb */
+    max-height: 90%; /* Korlátozva a magasságát */
+}
+
+.sagemcom-szabadsag-holidayRequestPopup h2 {
+    text-align: center; /* Címsor középre igazítása */
+    margin-bottom: 20px; /* Több hely a címsor alatt */
+    color: #333; /* Sötétebb szín a jobb olvashatóságért */
+    font-size: 24px; /* Nagyobb betűméret */
+}
+
+
+
+.sagemcom-szabadsag-holidayRequestPopup .form-control {
+    margin-bottom: 15px; /* Egységesített margó minden control alatt */
+    border-radius: 4px; /* Kerekített sarkok */
+    border: 1px solid #ced4da; /* Bootstrap stílusú keret */
+}
+
+.sagemcom-szabadsag-holidayRequestPopup .sagemcom-szabadsag-flex-container {
+    justify-content: space-between; /* Az elemek szétosztása */
+    margin-bottom: 20px; /* Egységesített margó a flex konténerek alatt */
+}
+
+.sagemcom-szabadsag-holidayRequestPopup button {
+    width: calc(50% - 10px); /* Gombok szélessége a felére */
+    margin: 5px; /* Kis hely a gombok között */
+}
+
+.sagemcom-szabadsag-holidayRequestPopup #closeHolidayRequestPopup {
+    position: absolute; /* A bezáró gomb elhelyezése */
+    right: 10px; /* Jobb oldalon */
+    top: 10px; /* Fent */
+    border: none; /* Nincs keret */
+    background: transparent; /* Átlátszó háttér */
+    font-size: 24px; /* Nagyobb ikon */
+}
+
+/* További gombok és form elemek stílusát itt lehet finomhangolni, ha szükséges */
+/* Alapvető gomb stílus, amit minden gombra alkalmazol */
+.sagemcom-beosztas-btn {
+    padding: 10px 20px; /* Nagyobb padding a szélesebb gombért */
+    font-size: 16px; /* Nagyobb betűméret a jobb olvashatóságért */
+    border-radius: 4px; /* Enyhén kerekített sarkok */
+    cursor: pointer; /* Mutató változtatása gomb felett */
+    transition: background-color 0.3s ease; /* Színváltási animáció */
+    border: none; /* Nincs keret */
+    box-shadow: none; /* Nincs árnyék */
+    color: white; /* Fehér szöveg szín */
+    display: block; /* A gombok saját sorban jelennek meg */
+    margin: 10px 0; /* Margó minden gomb között */
+}
+
+/* Kék gomb specifikus stílusok */
+.sagemcom-szabadsag-btn-primary {
+    background-color: #007bff; /* Világoskék háttérszín */
+}
+
+.sagemcom-szabadsag-btn-primary:hover {
+    background-color: #0056b3; /* Sötétebb háttérszín a hover állapotban */
+}
+
+/* Másodlagos gomb stílusok, ha van ilyen */
+.sagemcom-szabadsag-btn-secondary {
+    background-color: #6c757d; /* Szürke háttérszín */
+}
+
+.sagemcom-szabadsag-btn-secondary:hover {
+    background-color: #5a6268; /* Sötétebb szürke a hover állapotban */
+}
+
+/* Inaktív vagy letiltott gomb stílus */
+.sagemcom-szabadsag-btn:disabled {
+    background-color: #cccccc; /* Halvány szín a letiltotthoz */
+    cursor: not-allowed; /* Mutató változtatása tiltott állapotban */
+}

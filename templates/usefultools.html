@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hasznos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fontawesome.com/icons/plus?f=classic&s=solid">
+    <link rel="stylesheet" href="static/css/calendar.css">
+    <link rel="stylesheet" href="/static/css/tools.css">
+</head>
+
+<body>
+    <h1>Regisztrációs szám megadása</h1>
+    <form id="registrationForm">
+        <label for="registrationNumber">Regisztrációs szám:</label>
+        <input type="text" id="registrationNumber" name="registrationNumber" required>
+        <button onclick="generateFiles()">Generálás</button>
+    </form>
+
+    <script src="/static/js/tools.js"></script>
+</body>
+
+</html>
+{% endblock %}

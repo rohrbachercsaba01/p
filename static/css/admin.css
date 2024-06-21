@@ -1,0 +1,138 @@
+@charset "UTF-8";
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+    font-size: 14px;
+    background-color: #f4f4f4;
+    /* Egységes háttérszín */
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin: 20px 0;
+    font-size: 24px;
+}
+
+.listnames {
+    width: 15%;
+    border: 2px;
+
+}
+
+.namepicker {
+    order: 1;
+    /* Place the second div at the start */
+    width: 400px;
+}
+
+#workdays {
+    width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-height: 300px;
+    order: 2;
+
+    /* Fix magasság, hogy a doboz mindig látható legyen */
+}
+
+#workhours {
+    width: 600px;
+    margin: 0 auto;
+    grid-column: 1;
+
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-height: 300px;
+
+    /* Fix magasság, hogy a doboz mindig látható legyen */
+}
+
+.workdays-group {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    /* Szeparáljuk a csoportokat */
+    padding-bottom: 10px;
+}
+
+.workdays-group:last-child {
+    border-bottom: none;
+}
+
+.workdays-div {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    background: #f9f9f9;
+    /* Háttérszín a különbség hangsúlyozásához */
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.workdays-div:hover {
+    background-color: #eaeaea;
+    /* Hover effekt */
+}
+
+.workdays-message {
+    margin: 0;
+    flex-grow: 1;
+    /* A szöveg kitölti a rendelkezésre álló helyet */
+    font-weight: 500;
+}
+
+.workdays-checkbox {
+    margin-left: 15px;
+    /* Checkbox és szöveg közötti hely */
+}
+
+hr {
+    border: none;
+    height: 4px;
+    background: linear-gradient(to right, #00328f, #519be0);
+    margin: 20px 0;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Two equal columns */
+}
+
+
+.betegszabiDiv {
+    grid-column: 1;
+    /* Place the second div in the first column */
+    /*background-color: lightgreen;*/
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.workhourSummaryDiv {
+    display: grid;
+    grid-column: 2;
+    /* Place the first div in the second column */
+    /*background-color: lightblue;*/
+    padding: 10px;
+    box-sizing: border-box;
+
+}
+
+.WHSummaryMonth{
+    grid-column: 2;
+
+}
+
+label{
+    width: 100%;
+}
+input{
+    width: 100%;
+}

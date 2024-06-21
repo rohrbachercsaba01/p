@@ -1,0 +1,92 @@
+@charset "UTF-8";
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+    font-size: 14px;
+    background-color: #f4f4f4; /* Egységes háttérszín */
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin: 20px 0;
+    font-size: 24px;
+}
+
+#notifications {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    min-height: 300px; /* Fix magasság, hogy a doboz mindig látható legyen */
+}
+
+.notification-group {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd; /* Szeparáljuk a csoportokat */
+    padding-bottom: 10px;
+}
+
+.notification-group:last-child {
+    border-bottom: none;
+}
+
+.notification-div {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    background: #f9f9f9; /* Háttérszín a különbség hangsúlyozásához */
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.notification-div:hover {
+    background-color: #eaeaea; /* Hover effekt */
+}
+
+.notification-message {
+    margin: 0;
+    flex-grow: 1; /* A szöveg kitölti a rendelkezésre álló helyet */
+    font-weight: 500;
+}
+
+.notification-checkbox {
+    margin-left: 15px; /* Checkbox és szöveg közötti hely */
+}
+
+#approveSelected, #declineSelected {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #28a745; /* Zöld szín az "Approve" gombhoz */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-items: center;
+}
+
+#declineSelected {
+    background-color: #dc3545; /* Piros szín a "Decline" gombhoz */
+}
+
+#approveSelected:hover {
+    background-color: #218838; /* Sötétebb zöld hover effekthez */
+}
+
+#declineSelected:hover {
+    background-color: #c82333; /* Sötétebb piros hover effekthez */
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 10vh; /* Take up full viewport height */
+  }

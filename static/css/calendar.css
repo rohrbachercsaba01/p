@@ -1,0 +1,191 @@
+@charset "UTF-8";
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+    font-size: 14px;
+    background-color: #f4f4f4; /* Egységes háttérszín */
+}
+
+#nameContainer {
+    display: flex; /* Use flexbox to center content */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically if there is a specific height */
+    flex-direction: column; /* Stack items vertically */
+    text-align: center; /* Ensure text within is centered */
+    margin-bottom: 20px; /* Provide spacing between this and subsequent elements */
+}
+
+#name {
+    display: block; /* Ensures the element is a block-level element */
+    text-align: center; /* Centers the text horizontally */
+    font-size: 20px; /* Adjust the font size as needed */
+    font-weight: bold; /* Optionally make the font bold */
+    margin-bottom: 20px; /* Adds some space below the name */
+    line-height: 1.5; /* Adjust the line height to control spacing if it wraps */
+}
+
+
+
+.sagemcom-beosztas-calendar {
+    max-width: 1100px;
+    margin: 40px auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.sagemcom-beosztas-overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+}
+
+.sagemcom-beosztas-scheduleForm {
+    margin-top: 20px;
+    width: 90%; /* Szélesség százalékban, hogy hasonlítson az előző form stílusára */
+    max-width: 600px; /* Maximális szélesség beállítása */
+    text-align: left; /* Igazítás balra, hogy hasonlítsanak a stílusok */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    background-color: white;
+    margin-left: auto; /* Középre igazítás */
+    margin-right: auto; /* Középre igazítás */
+}
+
+.sagemcom-beosztas-flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap; /* Tördelés támogatása kisebb képernyőméretek esetén */
+}
+
+.sagemcom-beosztas-flex-container label, .sagemcom-beosztas-flex-container button {
+    margin-right: 10px;
+    flex-basis: 20%; /* Alap méret beállítása, hogy hasonlítsanak a stílusok */
+}
+
+.sagemcom-beosztas-popupForm {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #000;
+    background-color: white;
+    padding: 20px;
+    z-index: 3; /* Z-index finomhangolása */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    width: 80%; /* Szélesség százalékban */
+    max-width: 400px; /* Maximális szélesség beállítása */
+}
+
+
+/* A FullCalendar stílusok megtartása, hogy konzisztens maradjon a megjelenés */
+.fc-daygrid-day-events {
+    height: 100px;
+    overflow-y: auto;
+    padding: 2px;
+}
+
+.fc-daygrid-day-top {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 2;
+}
+
+
+/* Alapvető gomb stílus, amit minden gombra alkalmazol */
+.sagemcom-button-btn {
+    padding: 10px 20px; /* Nagyobb padding a szélesebb gombért */
+    font-size: 16px; /* Nagyobb betűméret a jobb olvashatóságért */
+    border-radius: 4px; /* Enyhén kerekített sarkok */
+    flex-grow: 1;
+    cursor: pointer; /* Mutató változtatása gomb felett */
+    transition: background-color 0.3s ease; /* Színváltási animáció */
+    border: none; /* Nincs keret */
+    box-shadow: none; /* Nincs árnyék */
+    color: white; /* Fehér szöveg szín */
+    display: block; /* A gombok saját sorban jelennek meg */
+    margin: 10px 0; /* Margó minden gomb között */
+}
+
+/* Kék gomb specifikus stílusok */
+.sagemcom-button-btn-primary {
+    background-color: #007bff; /* Világoskék háttérszín */
+}
+
+.sagemcom-button-btn-primary:hover {
+    background-color: #0056b3; /* Sötétebb háttérszín a hover állapotban */
+}
+
+/* Másodlagos gomb stílusok, ha van ilyen */
+.sagemcom-button-btn-secondary {
+    background-color: #6c757d; /* Szürke háttérszín */
+}
+
+.sagemcom-button-btn-secondary:hover {
+    background-color: #5a6268; /* Sötétebb szürke a hover állapotban */
+}
+
+/* Inaktív vagy letiltott gomb stílus */
+.sagemcom-button-btn:disabled {
+    background-color: #cccccc; /* Halvány szín a letiltotthoz */
+    cursor: not-allowed; /* Mutató változtatása tiltott állapotban */
+}
+
+.sagemcom-attendance-btn {
+    padding: 10px 20px; /* Nagyobb padding a szélesebb gombért */
+    font-size: 16px; /* Nagyobb betűméret a jobb olvashatóságért */
+    border-radius: 4px; /* Enyhén kerekített sarkok */
+    flex-grow: 1;
+    cursor: pointer; /* Mutató változtatása gomb felett */
+    transition: background-color 0.3s ease; /* Színváltási animáció */
+    border: none; /* Nincs keret */
+    box-shadow: none; /* Nincs árnyék */
+    color: white; /* Fehér szöveg szín */
+    display: block; /* A gombok saját sorban jelennek meg */
+    margin: 0 auto; /* Margó minden gomb között */
+
+}
+
+/* Kék gomb specifikus stílusok */
+.sagemcom-attendance-btn-primary {
+    background-color: #007bff; /* Világoskék háttérszín */
+}
+
+.sagemcom-attendance-btn-primary:hover {
+    background-color: #0056b3; /* Sötétebb háttérszín a hover állapotban */
+}
+
+
+.sagemcom-button-btn-newworker {
+    background-color: #2b2b2e; /* Szürke háttérszín */
+    width: 130px;
+    height: 35px;
+}
+
+.sagemcom-button-btn-newworker:hover {
+    background-color: #84878d; /* Sötétebb háttérszín a hover állapotban */
+}
+
+.sagemcom-button-btn-fullatt {
+    background-color: #007bff; /* Szürke háttérszín */
+    width: 130px;
+    height: 35px;
+}
+
+.sagemcom-button-btn-fullatt:hover {
+    background-color: #0056b3;/* Sötétebb háttérszín a hover állapotban */
+}

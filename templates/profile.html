@@ -1,0 +1,89 @@
+{% extends 'layout.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil Módosítása</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="static/css/navbar.css">
+  <link rel="stylesheet" href="static/css/profile.css">
+</head>
+
+<body>
+
+  <div class="profile-container">
+    <h2>Profil módosítása</h2>
+    <form>
+      <div class="form-group">
+        <label for="firstName">Vezetéknév: </label>
+        <p id="firstName">{{ session['firstName'] }}</p>
+      </div>
+      <div class="form-group">
+        <label for="lastName">Keresztnév: </label>
+        <p id="lastName">{{ session['lastName'] }}</p>
+      </div>
+      <div class="form-group">
+        <label for="yearOfBirth">Születési év: </label>
+        <p id="yearOfBirth">{{ session['yearOfBirth'] }}</p>
+      </div>
+      <div class="form-group">
+        <label for="numOfChild">Gyerekek száma: </label>
+        <p id="numOfChild">{{ session['numOfChild'] }}</p>
+      </div>
+      <div class="form-group">
+        <label for="workTime">Munkaviszony ideje: </label>
+        <p id="workTime">{{ session['workTime'] }}</p>
+      </div>
+    </form>
+
+    <a class="btn btn-link" href="/pass_change">Jelszó megváltoztatása</a>
+
+    <div>
+      <label for="holidays">Szabadnapok száma: </label>
+      <div>
+        {% for hday in realtimeholidays %}
+        <p id="holidays">{{ hday.holidays }}</p>
+        {% endfor %}
+      </div>
+    </div>
+    <div>
+      <h3>Szabadságok</h3>
+      {% if user_holidays %}
+      <ul class="profile-list-group">
+        {% for holiday in user_holidays %}
+
+        <li class="profile-list-group-item">{{ holiday.startDate }} - {{ holiday.endDate }} {{ holiday.szabadsagType }}
+          jóváhagyta: {{ holiday.approver }}</li>
+
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p>Nincsenek rögzített szabadságok.</p>
+      {% endif %}
+    </div>
+    <div>
+      <h3>Kérvényezett szabadságok</h3>
+      {% if user_requested_holidays %}
+      <ul class="profile-list-group">
+        {% for requested_holiday in user_requested_holidays %}
+
+        <li class="profile-list-group-item">{{ requested_holiday.startDate }} - {{ requested_holiday.endDate }}</li>
+
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p>Nincsenek rögzített szabadságok kérvények.</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <script src="/static/js/profilepopup.js" defer></script>
+  <script src="/static/js/profile.js" defer></script>
+</body>
+
+</html>
+{% endblock %}

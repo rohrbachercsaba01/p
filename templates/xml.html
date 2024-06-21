@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+{% block content %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>XML Analyzer</title>
+</head>
+
+<body>
+    <h2>Upload XML File</h2>
+    <form id="uploadForm" method="POST" enctype="multipart/form-data">
+        <input id="inputxml" type="file" accept=".xml">
+        <button type="submit">Clear</button>
+    </form>
+    <br>
+    <div id="interactionArea"
+        style="width: 100%; height: 300px; overflow-y: scroll; border: 1px solid #ccc; padding: 10px;"></div>
+    <textarea id="userInput" rows="1" cols="50" placeholder="Enter your response..."></textarea>
+    <button onclick="sendResponse()">Send</button>
+
+    <script>
+        var currentQuestion = "";
+
+        function appendMessage(message) {
+            var interactionArea = document.getElementById("interactionArea");
+            interactionArea.innerHTML += message + "<br>";
+            interactionArea.scrollTop = interactionArea.scrollHeight; // Auto-scroll to bottom
+        }
+
+        function sendResponse() {
+            var response = document.getElementById("userInput").value.trim();
+            const fileInput = document.getElementById("inputxml");
+            const file = fileInput.files[0];
+
+            if (response === "") return;
+
+            appendMessage("<strong>You:</strong> " + response);
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (params) {
+                    const xmlContent = event.target.result;
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", "/analyze", true);
+                    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                            var responseData = JSON.parse(xhr.responseText);
+                            appendMessage("<strong>Analyzer:</strong> " + responseData.message);
+                            //console.log(responseData.message)
+                            currentQuestion = responseData.question; // Update current question
+                        }
+                    };
+                    xhr.send(JSON.stringify({ response: response, question: currentQuestion, file: xmlContent }));
+                    document.getElementById("userInput").value = "";
+                };
+                reader.readAsText(file);
+            }
+        }
+    </script>
+</body>
+
+</html>
+{% endblock %}

@@ -1,0 +1,113 @@
+@charset "UTF-8";
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+    font-size: 14px;
+    background-color: #f4f4f4; /* Hozzáadva: Egységes háttérszín */
+}
+
+#calendar {
+    max-width: 1100px;
+    margin: 40px auto;
+    background-color: white; /* Hozzáadva: Háttérszín a naptárnak */
+    border-radius: 8px; /* Hozzáadva: Lekerekített sarkok */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Hozzáadva: Árnyék a naptárnak */
+}
+
+#scheduleForm {
+    margin-top: 20px;
+    width: 90%; /* Módosítva: Szélesség százalékban */
+    max-width: 500px; /* Hozzáadva: Maximális szélesség */
+    text-align: left; /* Módosítva: Igazítás balra */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    background-color: white; /* Hozzáadva: Háttérszín */
+    margin-left: auto; /* Hozzáadva: Középre igazítás */
+    margin-right: auto; /* Hozzáadva: Középre igazítás */
+}
+
+.oktatas-flex-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap; /* Hozzáadva: Tördelés támogatása kisebb képernyőméretek esetén */
+}
+
+.oktatas-flex-container label {
+    margin-right: 10px;
+    flex-basis: 20%; /* Hozzáadva: Alap méret a label-eknek */
+}
+
+#popupForm {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #000;
+    background-color: white;
+    padding: 20px;
+    z-index: 1000;
+    border-radius: 8px; /* Hozzáadva: Lekerekített sarkok */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Hozzáadva: Erősebb árnyék */
+    width: 80%; /* Hozzáadva: Szélesség százalékban */
+    max-width: 400px; /* Hozzáadva: Maximális szélesség */
+}
+
+/* További stílusok megtartása változatlanul */
+
+
+.fc-daygrid-day-events {
+    /* Set a fixed height for the event container within each day cell */
+    height: 100px; /* Adjust based on your needs */
+    
+    /* Make the container scrollable */
+    overflow-y: auto;
+    
+    /* Optional: add a small padding for visual spacing */
+    padding: 2px;
+}
+
+.fc-daygrid-day-top {
+    /* Prevent the date number from being pushed out of view */
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 2;
+}
+
+/* Gombok */
+.oktatas-btn-primary {
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.oktatas-btn-primary:hover {
+    background-color: #0056b3;
+}
+  
+.oktatas-btn-secondary {
+    background-color: #6c757d;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+  
+.oktatas-btn-secondary:hover {
+    background-color: #5a6268;
+}
+  
+  /* Input és Select mezők */
+.oktatas-form-control {
+    width: 100%;
+    
+}  

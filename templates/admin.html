@@ -1,0 +1,106 @@
+{% extends 'layout.html' %}
+{% block content %}
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="static/css/calendar.css">
+    <link rel="stylesheet" href="static/css/admin.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="betegszabiDiv">
+            <div style="position: absolute; left: 0%;" class="namepicker">
+
+                <div class="sagemcom-beosztas-flex-container">
+                    <label>Törlés beosztásból:</label>
+                    <input type="checkbox" id="delfromschedule" required>
+                </div>
+
+                <div id="schedulediv" style="display: none;">
+                    <label style='font-size: 20px;'>Munkavállaló törlése a beosztásból:</label>
+                    <form id="delschedule">
+                        <div class="oktatas-flex-container">
+                            <label>Szabadság:</label>
+                            <input type="checkbox" id="simpleszabi" name="ss" required>
+                            <label>Betegszabadság:</label>
+                            <input type="checkbox" id="betegszabi" name="sl" required>
+                            <label>Törlés szabadság kiírás nélkül:</label>
+                            <input type="checkbox" id="simpledelete" name="sd" required>
+                            <div></div>
+                            <label style='font-size: 20px;'>Név:</label>
+                            <select id="nevDropdown" onchange="getscheduleFromDB()">
+                                <option value="">Felhasználó</option>
+                            </select>
+                            <label style='font-size: 20px;'>Hónap:</label>
+                            <select id="monthDropdown" name="monthDropdown" onchange="getscheduleFromDB()">
+                                <option value="January">Január</option>
+                                <option value="February">Február</option>
+                                <option value="March">Március</option>
+                                <option value="April">Április</option>
+                                <option value="May">Május</option>
+                                <option value="June">Június</option>
+                                <option value="July">Július</option>
+                                <option value="August">Augusztus</option>
+                                <option value="September">Szeptember</option>
+                                <option value="October">Október</option>
+                                <option value="November">November</option>
+                                <option value="December">December</option>
+                            </select>
+                            <button id="saveschedule" style="display: none;"
+                                class="sagemcom-button-btn sagemcom-button-btn-primary">Betegszabi mentése</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+            <div id="workdays"></div>
+        </div>
+
+        <div class="workhourSummaryDiv">
+            <div id="workhours"></div>
+            <!--  
+            <div id="WHSummaryMonth">
+                <label style='font-size: 20px;'>Hónap:</label>
+                <select id="monthDropdownWHSummary" name="monthDropdownWHSummary" >
+                    <option value="January">Január</option>
+                    <option value="February">Február</option>
+                    <option value="March">Március</option>
+                    <option value="April">Április</option>
+                    <option value="May">Május</option>
+                    <option value="June">Június</option>
+                    <option value="July">Július</option>
+                    <option value="August">Augusztus</option>
+                    <option value="September">Szeptember</option>
+                    <option value="October">Október</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                </select>
+            </div>
+            -->
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="/static/js/bootstrap.bundle.min.js" defer></script>
+    <script src="/static/js/popper.min.js" defer></script>
+
+    <script src="/static/js/profilepopup.js" defer></script>
+    <script src="static/js/adminpage.js" defer></script>
+
+</body>
+
+
+</html>
+{% endblock %}

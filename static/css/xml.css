@@ -1,0 +1,25 @@
+/* style.css */
+.video-container {
+    position: relative;
+    width: 640px; /* Adjust based on your video's width */
+    height: 360px; /* Adjust based on your video's height */
+    margin: auto;
+}
+
+#playButton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    padding: 10px 20px;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+video {
+    width: 100%;
+    height: auto;
+}
